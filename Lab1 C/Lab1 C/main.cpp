@@ -27,20 +27,36 @@ int main()
 	int row = 0;
 	do{
 		cout << "¬ведите текст" << endl;
-		cin.getline(file[row].text, 500);
+		gets(file[row].text);
 		cout << "’отите продолжить ввод текста y/n "<<endl;
 		answer = getch();
 		fflush(stdin);
 		row++;
 	} while (answer != 'n');
+	for (int i = 0; i < row; i++)
+	{
+		char* ptr = strtok(file[i].text, " .,!?");
+		char* max = ptr;
+		char* word;
+
+		do {
+			if (strlen(max) < strlen(ptr))
+			{
+				max = ptr;
+			}
+		} while (ptr = strtok(NULL, " .,!?"));
+
+		cout << max << endl;
+	}
 	/*FILE *f;
 	f = fopen("Text.txt", "w");
 	for (int i = 0; i < row; i++)
 	{
-		if (i % 2 == 0)
+		if (i % 2 == 1)
 		{
-			fputs(file[i].text, f);
+			fputs(maxidx, f);
 			fputs("\n", f);
+		
 		}
 	}
 	fclose(f);*/
